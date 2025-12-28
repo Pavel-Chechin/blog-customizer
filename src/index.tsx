@@ -28,6 +28,10 @@ const App = () => {
 		setSettings(newSettings);
 	};
 
+	const resetToDefaults = () => {
+		setSettings(defaultArticleState);
+	};
+
 	return (
 		<main
 			className={clsx(styles.main)}
@@ -40,7 +44,10 @@ const App = () => {
 					'--bg-color': settings.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm onSubmit={updateArticleStyles} />
+			<ArticleParamsForm
+				onSubmit={updateArticleStyles}
+				onReset={resetToDefaults}
+			/>
 			<Article />
 		</main>
 	);

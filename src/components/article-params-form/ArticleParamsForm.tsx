@@ -19,9 +19,10 @@ import styles from './ArticleParamsForm.module.scss';
 
 export type FormProps = {
 	onSubmit: (data: ArticleStateType) => void;
+	onReset: () => void;
 };
 
-export const ArticleParamsForm = ({ onSubmit }: FormProps) => {
+export const ArticleParamsForm = ({ onSubmit, onReset }: FormProps) => {
 	const [isPanelOpen, setIsPanelOpen] = useState(false);
 	const [articleSettings, setArticleSettings] =
 		useState<ArticleStateType>(defaultArticleState);
@@ -41,6 +42,7 @@ export const ArticleParamsForm = ({ onSubmit }: FormProps) => {
 
 	const resetSettings = () => {
 		setArticleSettings(defaultArticleState);
+		onReset();
 	};
 
 	const handleOutsideClick = (event: MouseEvent) => {
